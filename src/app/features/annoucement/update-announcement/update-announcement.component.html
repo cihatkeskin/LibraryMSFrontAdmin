@@ -1,0 +1,46 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Update Announcement</h4>
+        <div class="container-fluid">
+            <form class="container-fluid" 
+             [formGroup]="updateAnnouncementForm" (ngSubmit)="UpdateAnnouncementSubmit(updateAnnouncementForm.value)">
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="Title" 
+                    labelId="title" 
+                    controlName="title" />
+                </div>
+                    
+                <div class="form-floating textarea">
+                    <textarea class="form-control" placeholder="Leave a comment here" 
+                    id="floatingTextarea" 
+                    formControlName="content" >
+                    </textarea>
+                    <label for="floatingTextarea">Comments</label>
+                </div>
+                <div class="form-floating mb-3 mt-3">
+                    <div class="d-md-flex align-items-center">
+                        <h6 class="me-3">CHOOSE</h6>
+                        <select class="form-select form-select-lg  me-2" id="CategoryData" aria-label="example"
+                        formControlName="tag">
+                            <option  id="selectedtag"  *ngFor="let tag of announceTags;index as i"
+                            [value]="announceTagsValue[i]"
+                              >{{tag}} 
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <div class="d-md-flex align-items-center ">
+                        <h6 class="me-3">IMAGE</h6>
+                        <input class="form-control bg-dark image " type="file" id="ImageFile" accept=".jpg,.jpeg,.png" 
+                        formControlName="file"
+                        (change)="uploadImage($event)">
+                    </div>
+                </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Update Announcenment</button>
+            </form>
+        </div>
+    </div>
+</div>
+

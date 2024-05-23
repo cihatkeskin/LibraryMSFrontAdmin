@@ -1,0 +1,72 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Add E-Book</h4>
+        <div class="container-fluid">
+            <form class="container-fluid" 
+             [formGroup]="addEBookForm" (ngSubmit)="AddBookSubmit(addEBookForm.value)">
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="ISBN Code" 
+                    labelId="isbnCode" 
+                    controlName="isbnCode" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Book Title" 
+                    labelId="bookTitle"
+                    controlName="eBookTitle"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Author Name" 
+                    labelId="authorName"
+                    controlName="authorName"/>
+                </div>
+                <div class="mb-3">
+                    <div class="d-md-flex align-items-center">
+                        <h6 class="me-3">IMAGE</h6>
+                        <input class="form-control bg-dark image" type="file" id="ImageFile" accept=".jpg,.jpeg,.png" 
+                        (change)="uploadImage($event)">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-md-flex align-items-center">
+                        <h6 class="me-3">PDF</h6>
+                        <input class="form-control bg-dark image ms-3" type="file" id="formFile" accept=".pdf" 
+                        (change)="uploadPDF($event)">
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Release Date" 
+                    labelId="releaseDate"
+                    controlName="releaseDate"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Page Count" 
+                    labelId="pageCount"
+                    controlName="pageCount"/>
+                </div>
+                <!-- Category Search -->
+                <app-search 
+                [searchCategoryList]="searchCategoryType"
+                [searchInputValues]="searchCategoryInputValues"
+                [searchController]="searchCategoryController"
+                (searchList)="searchCategoryList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg p4-2 me-2" id="CategoryData" aria-label=".form-select-lg example"
+                    formControlName="categoryId">
+                        <option  id="selectedCategory"  *ngFor="let Category of CategorySearchList"
+                        [value]="Category.id"
+                          >{{Category.name }} 
+                        </option>
+                    </select>
+                </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Add E-Book</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+
+<div class="col-sm-12 col-xl-8 mx-auto" >
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">{{catalog.name}}</h4>
+        
+            <!-- <div class="row mb-4">
+                <label for="inputIsbn" class="col-sm-2 col-form-label">ISBN Code</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputIsbn" value="{{book.isbnCode}}"> 
+                </div>
+            </div>
+            <div class="row mb-4">
+              <label for="inputPublisher" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPublisher" value="{{book.publisherName}}">
+              </div>
+            </div> -->
+
+
+              <div class="accordion " id="accordionExample">
+                <!-- Books -->
+                <div class="accordion-item mb-4">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button (click)="accordionCollapse($event,'collapseOne')"
+                    class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Books
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-secondary " *ngFor="let book of books">
+
+                      <div class="row mb-4">
+                        <label for="inputLocName" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLocName" value="{{book.bookTitle}}"> 
+                          </div>
+                      </div>
+                      <div class="row mb-4">
+                        <label for="inputFloorName" class="col-sm-2 col-form-label">Publisher Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputFloorName" value="{{book.publisherName}}"> 
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+                <!-- Authors -->
+                <div class="accordion-item  ">
+                    <!-- <h2 class="accordion-header" id="headingTwo">
+                      <button (click)="accordionCollapse($event,'collapseTwo')"
+                      class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Authors
+                      </button>
+                    </h2> -->
+                    <!-- <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div class="accordion-body bg-secondary">
+                        <div class="row mb-4" *ngFor="let item of book.authors">
+                          <label for="inputauth" class="col-sm-2 col-form-label">Author</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputauth" value="{{item.firstName}} {{item.lastName}} "> 
+                            </div>
+                        </div>
+                      </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="container-fluid mx-auto mt-4 ">
+              <div class="row">
+                <button type="button" class="btn btn-dark rounded-pill mx-auto " id="update">Update</button>
+              </div>
+            </div>
+    </div>
+</div>
+
+  

@@ -1,0 +1,117 @@
+
+  <div class="col-sm-12 col-xl-8 mx-auto" >
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">{{book.bookTitle}}</h4>
+        
+            <div class="row mb-4">
+                <label for="inputIsbn" class="col-sm-2 col-form-label">ISBN Code</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputIsbn" value="{{book.isbnCode}}"> 
+                </div>
+            </div>
+            <div class="row mb-4">
+              <label for="inputPublisher" class="col-sm-2 col-form-label">Publisher</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPublisher" value="{{book.publisherName}}">
+              </div>
+            </div>
+            <div class="row mb-4">
+                <label for="inputCategory" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCategory" value="{{book.categoryName}}">
+                </div>
+            </div>
+            <div class="row mb-4">
+              <label for="inputEdition" class="col-sm-2 col-form-label">Edition</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputEdition" value="{{book.bookEdition}}">
+              </div>
+            </div>
+            <div class="row mb-4">
+              <label for="inputRelease" class="col-sm-2 col-form-label">Release Date</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputRelease" value="{{book.releaseDate}}">
+              </div>
+            </div>
+            <div class="row mb-4">
+              <label for="inputPage" class="col-sm-2 col-form-label">Page Count</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPage" value="{{book.pageCount}}">
+              </div>
+            </div>
+            <div class="row mb-4">
+            </div>
+
+              <div class="accordion " id="accordionExample">
+                <!-- Location -->
+                <div class="accordion-item mb-4">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button (click)="accordionCollapse($event,'collapseOne')"
+                    class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Location
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body bg-secondary ">
+
+                      <div class="row mb-4">
+                        <label for="inputLocName" class="col-sm-2 col-form-label">Location Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLocName" value="{{book.location?.name}}"> 
+                          </div>
+                      </div>
+                      <div class="row mb-4">
+                        <label for="inputFloorName" class="col-sm-2 col-form-label">Floor Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputFloorName" value="{{book.location?.floorNo}}"> 
+                          </div>
+                     </div>
+                      <div class="row mb-4">
+                        <label for="inputShelfName" class="col-sm-2 col-form-label">Shelf Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputShelfName" value="{{book.location?.shelfName}}"> 
+                          </div>
+                      </div>
+                      <div class="row mb-4">
+                        <label for="inputShelfNo" class="col-sm-2 col-form-label">Shelf No</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputShelfNo" value="{{book.location?.shelfNo}}"> 
+                          </div>
+                      </div>
+
+                    </div>
+                   </div>
+                </div>
+                <!-- Authors -->
+                <div class="accordion-item  ">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button (click)="accordionCollapse($event,'collapseTwo')"
+                      class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Authors
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div class="accordion-body bg-secondary">
+                        <div class="row mb-4" *ngFor="let item of book.authors">
+                          <label for="inputauth" class="col-sm-2 col-form-label">Author</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="inputauth" value="{{item.firstName}} {{item.lastName}} "> 
+                            </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid mx-auto mt-4 ">
+              <div class="row">
+                <button type="button" class="btn btn-dark rounded-pill mx-auto " id="update">Update</button>
+              </div>
+            </div>
+    </div>
+</div>
+
+  

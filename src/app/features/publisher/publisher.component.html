@@ -1,0 +1,53 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">PUBLISHERS</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchPublisherType"
+                [searchInputValues]="searchPublisherInputValues"
+                [searchController]="controller"
+                (searchList)="searchList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <button type="button" routerLink="/admin/publisher-add" 
+            class="btn btn-dark m-2" id="addEBookButton">Create Publisher</button>
+        </div>
+        <div class="table-responsive ">
+            <table class="table text-start align-middle table-bordered table-hover mb-3 ">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col">#</th>
+                        <th class="fs-5 text-white" scope="col">Publisher Name</th>
+                        <th class="fs-5 text-white" scope="col">Language</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let publisher of publisherList$ | async; index as i">
+                    <tr >
+                        <th scope="row">{{i+1}}</th>
+                        <td >{{publisher.name}}</td>
+                        <td >{{publisher.language}}</td>
+                        <td 
+                        [id]="publisher.id"
+                        [data]="dataInfo"
+                        [dataAction]="publisher.id"
+                        appDelete></td>
+                        <td><a [routerLink]="['/admin/publisher/update',publisher.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchPublisherInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

@@ -1,0 +1,38 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">FEEDBACKS</h4>
+        </div>
+        <div class="table-responsive ">
+            <table class="table text-start align-middle table-bordered table-hover mb-3 ">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col">#</th>
+                        <th class="fs-5 text-white" scope="col">Email</th>
+                        <th class="fs-5 text-white" scope="col">Member Name</th>
+                        <th class="fs-5 text-white" scope="col">Tel.</th>
+                        <th class="fs-5 text-white" scope="col">Title</th>
+                        <th class="fs-5 text-white" scope="col">Content</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let feed of feedBackList$ |async;index as i">
+                    <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{feed.email}}</td>
+                        <td>{{feed.firstName}} {{feed.lastName}} </td>
+                        <td>{{feed.phoneNumber}}</td>
+                        <td>{{feed.title }}</td>
+                        <td>{{feed.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchFeedBackInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

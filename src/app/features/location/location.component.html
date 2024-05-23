@@ -1,0 +1,58 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">LOCATIONS</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchLocationType"
+                [searchInputValues]="searchLocationInputValues"
+                [searchController]="controller"
+                (searchList)="searchList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <button type="button" routerLink="/admin/location-add" 
+            class="btn btn-dark m-2" id="addEBookButton">Create Location</button>
+        </div>
+        <div class="table-responsive ">
+            <table class="table text-start align-middle table-bordered table-hover mb-3 ">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col">#</th>
+                        <th class="fs-5 text-white" scope="col">Location Name</th>
+                        <th class="fs-5 text-white" scope="col">Floor No</th>
+                        <th class="fs-5 text-white" scope="col">Shelf Name</th>
+                        <th class="fs-5 text-white" scope="col">Shelf No</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let location of locationList$ |async;index as i">
+                    <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{location.name}}</td>
+                        <td>{{location.floorNo}}</td>
+                        <td>{{location.shelfName}}</td>
+                        <td>{{location.shelfNo}}</td>
+                        <td 
+                        [id]="location.id"
+                        [data]="dataInfo"
+                        [dataAction]="location.id"
+                        appDelete 
+                        ></td>
+                        <td><a [routerLink]="['/admin/location/update',location.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchLocationInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

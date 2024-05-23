@@ -1,0 +1,117 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Update Magazine</h4>
+        <div class="container-fluid" >
+            <form class="container-fluid" [formGroup]="updateMaterialForm" (ngSubmit)="UpdateMaterialSubmit(updateMaterialForm.value)">
+                <div class="form-floating mb-3">
+                    <myinput 
+                   labelText="Name" 
+                   labelId="name" 
+                   controlName="name" />
+               </div>
+               <select class="form-select form-select-lg  mb-3" id="materialType" aria-label=".form-select-lg example"
+               formControlName="materialType">
+                   <option  id="selectedNaterial"  *ngFor="let material of materialTags; index as i "
+                   [ngValue]="materialTagsValue[i]" 
+                     >{{material}}
+                   </option>
+               </select>
+               <div class="form-floating mb-3">
+                   <myinput 
+                   labelText="Release Date" 
+                   labelId="releaseDate"
+                   controlName="releaseDate"
+                   inputType="number"/>
+               </div>
+               <div class="publisher">
+                <span class="d-inline-block mb-3 me-3" tabindex="0" data-bs-toggle="tooltip" 
+                title="Search Directive = 1 Choose category 2 Write word in search input 3 Click button">
+                    <button class="btn btn-danger" aria-label="Search" id="SearchInstruction" type="button" disabled>
+                     <i class="bi bi-patch-question-fill"></i></button>
+                </span>
+                <span class="d-inline-block mb-3" tabindex="0" data-bs-toggle="tooltip" 
+                title="If you want to update publisher, you can search.">
+                    <button class="btn btn-danger" aria-label="Search" id="SearchInstruction" type="button" disabled>
+                        <i class="bi bi-exclamation-octagon-fill"></i></button>
+                </span>
+                <div class="form-floating mb-3 container ps-0">
+                 <div class="row pe-0">
+                     <div class="col-md-3 my-auto me-0 pe-0">
+                       <h6 class="me-0">Current Publisher :</h6>
+                     </div>
+                     <div class="col-md-9 pe-0 ps-0">
+                         <div class="form-floating ">
+                             <input type="string" class="form-control" id="disableInput" 
+                             value="{{material.publisherName}}" disabled>
+                         </div>                       
+                     </div>
+                 </div>
+                 </div>
+                <!-- Publisher Search -->
+                <app-search 
+                [searchCategoryList]="searchPublisherTypeList"
+                [searchInputValues]="searchPublisherInputValues"
+                [searchController]="searchPublisherController"
+                (searchList)="searchPublisherList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg  me-2" id="publisherData" aria-label=".form-select-lg example" 
+                    formControlName="publisherId">
+                        <option  id="selectedPublisher"  *ngFor="let publisher of publisherSearchList"
+                        [value]="publisher.id"
+                          >{{publisher.name}}
+                          
+                        </option>
+                    </select>
+                </div>
+               </div>
+               <div class="category">
+                <span class="d-inline-block mb-3 me-3" tabindex="0" data-bs-toggle="tooltip" 
+                title="Search Directive = 1 Choose category 2 Write word in search input 3 Click button">
+                    <button class="btn btn-danger" aria-label="Search" id="SearchInstruction" type="button" disabled>
+                     <i class="bi bi-patch-question-fill"></i></button>
+                </span>
+                <span class="d-inline-block mb-3" tabindex="0" data-bs-toggle="tooltip" 
+                title="If you want to update category, you can search.">
+                    <button class="btn btn-danger" aria-label="Search" id="SearchInstruction" type="button" disabled>
+                        <i class="bi bi-exclamation-octagon-fill"></i></button>
+                </span>
+ 
+                <div class="form-floating mb-3 container ps-0">
+                 <div class="row pe-0">
+                     <div class="col-md-3 my-auto me-0 pe-0">
+                       <h6 class="me-0">Current Category :</h6>
+                     </div>
+                     <div class="col-md-9 pe-0 ps-0">
+                         <div class="form-floating ">
+                             <input type="string" class="form-control" id="disableInput" 
+                             value="{{material.categoryName}}" disabled>
+                         </div>                       
+                     </div>
+                 </div>
+                 </div>
+                <!-- Category Search -->
+                <app-search 
+                [searchCategoryList]="searchCategoryType"
+                [searchInputValues]="searchCategorieInputValues"
+                [searchController]="searchCategoryController"
+                (searchList)="searchCategoryList($event)">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg  me-2" id="CategoryData" aria-label=".form-select-lg example"
+                    formControlName="categoryId">
+                        <option  id="selectedCategory"  *ngFor="let Category of CategorySearchList"
+                        [value]="Category.id"
+                          >{{Category.name }} 
+                        </option>
+                    </select>
+                </div>
+               </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Update Magazine</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

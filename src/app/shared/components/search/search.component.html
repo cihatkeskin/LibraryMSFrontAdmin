@@ -1,0 +1,17 @@
+<div class="d-flex my-auto ">
+    <label for="exampleFormControlInput1" class="form-label" id="searchLabel"></label>
+    <input type="string" [value]="searchInputValues" 
+    (change)="changeInput($event)"
+    class="form-control me-2" [id]="searchController" placeholder="Search...">
+    <select class="form-select form-select-lg  me-2" id="floatingSelect" aria-label=".form-select-lg example" 
+    (change)="changeSelectbox($event)">
+        <option  id="selected" [value]="item.value" *ngFor="let item of searchCategoryList"
+          >{{item.name}}
+        </option>
+    </select>
+    <button type="button" 
+    class="btn btn-dark " 
+    id="searchButton" 
+    (click)="search()">Search {{searchController}}
+    </button>
+</div>

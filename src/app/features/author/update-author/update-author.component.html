@@ -1,0 +1,22 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Update Author</h4>
+        <div class="container-fluid" >
+            <form class="container-fluid" [formGroup]="updateAuthorForm" (ngSubmit)="UpdateAuthorSubmit(updateAuthorForm.value)">
+                <div class="form-floating mb-3">
+                    <myinput 
+                   labelText="First Name" 
+                   labelId="firstName" 
+                   controlName="firstName" />
+               </div>
+               <div class="form-floating mb-3">
+                   <myinput 
+                   labelText="Last Name" 
+                   labelId="lastName"
+                   controlName="lastName"/>
+               </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Update Author</button>
+            </form>
+        </div>
+    </div>
+</div>

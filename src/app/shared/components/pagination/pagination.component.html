@@ -1,0 +1,26 @@
+<div class="col-sm-6 mx-auto">
+    <div class="bg-secondary rounded h-100 ">
+        <div class="d-flex  justify-content-center mb-2">
+            <h5 >{{countList}} Total Result</h5>
+        </div>
+        <div class="btn-toolbar justify-content-center " role="toolbar" >
+            <div class="btn-group btn-group-md me-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary" aria-label="Aria Name"
+                (click)="searchPrevious()"
+                [disabled]="!searchhasPreviousList">
+                    <i class="bi bi-chevron-double-left"></i>
+                </button>
+            </div>
+            <div class="btn-group btn-group-md me-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary">{{searchPageIndex +1}}</button>
+            </div>
+            <div class="btn-group btn-group-md me-2" role="group" aria-label="Second group">
+                <button type="button" class="btn btn-secondary"aria-label="Aria Name"
+                (click)="searchNext()"
+                [disabled]="!searchNextlist">
+                    <i class="bi bi-chevron-double-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

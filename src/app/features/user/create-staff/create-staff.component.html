@@ -1,0 +1,50 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Create Staff</h6>
+        <div class="container-fluid">
+            <form class="container-fluid" 
+             [formGroup]="createStaffForm" (ngSubmit)="AddBookSubmit(createStaffForm.value)">
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="First Name" 
+                    labelId="firstName" 
+                    controlName="firstName" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Last Name" 
+                    labelId="lastName"
+                    controlName="lastName"/>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control bg-dark image" type="file" id="formFile" accept=".jpg,.jpeg,.png" 
+                    (change)="uploadImage($event)"
+                    formControlName="file">
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Email" 
+                    labelId="email"
+                    controlName="email"
+                    inputType="email"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Birth Date" 
+                    labelId="birthDate"
+                    controlName="birthDate"
+                    inputType="date"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Password" 
+                    labelId="password"
+                    controlName="password"
+                    inputType="password"/>
+                </div>
+
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Add Staff</button>
+            </form>
+        </div>
+    </div>
+</div>

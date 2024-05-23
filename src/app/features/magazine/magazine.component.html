@@ -1,0 +1,61 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">MAGAZİNES</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchMagazineType"
+                [searchInputValues]="searchMagazineInputValues"
+                [searchController]="controller"
+                (searchList)="searchList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <button type="button" routerLink="/admin/all-materials/add-magazine" 
+            class="btn btn-dark m-2" id="addEBookButton">Create Magazine</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">ISSN Code</th>
+                        <th scope="col">Magazine Title</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Publisher</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Realese Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let magazine of magazineList$ | async; index as i">
+                    <tr >
+                        <th scope="row">{{i+1}}</th>
+                        <td >{{magazine.issnCode}}</td>
+                        <td >{{magazine.magazineTitle}}</td>
+                        <td >{{magazine.number}}</td>
+                        <td >{{magazine.publisherName}}</td>
+                        <td >{{magazine.categoryName}}</td>
+                        <td >{{magazine.releaseDate | date: 'dd/MM/yyyy'}}</td>
+                        <td 
+                        [id]="magazine.id"
+                        [data]="dataInfo"
+                        [dataAction]="magazine.id"
+                        appDelete></td>
+                        <td><a [routerLink]="['/admin/all-materials/update/magazine',magazine.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchMagazineInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

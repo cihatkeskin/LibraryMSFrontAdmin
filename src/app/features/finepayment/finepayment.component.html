@@ -1,0 +1,73 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">E-BOOKS</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchPaymentType"
+                [searchInputValues]="searchPaymentInputValues"
+                [searchController]="controller"
+                (searchList)="searcheBookList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <!-- <button type="button" routerLink="/admin/all-materials/add-e-book" 
+            class="btn btn-dark m-2" id="addEBookButton">Create E-Book</button> -->
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col" >#</th>
+                        <th class="fs-5 text-white" scope="col">First Name</th>
+                        <th class="fs-5 text-white" scope="col">Last Name</th>
+                        <th class="fs-5 text-white" scope="col">Total Fine</th>
+                        <th class="fs-5 text-white" scope="col">Book Title</th>
+                        <th class="fs-5 text-white" scope="col">Fine Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let payment of payment$ | async; index as i">
+                    <tr>
+                        <th class=" align-middle" scope="row">{{i+1}}</th>
+                        <td class=" align-middle">{{payment.bookIssueMemberFirstName}}</td>
+                        <td class=" align-middle">{{payment.bookIssueMemberLastName}}</td>
+                        <td class=" align-middle">{{payment.fineTotal | currency: "₺" }}</td>
+                        <td class=" align-middle">{{payment.bookIssueBookBookTitle}}</td>
+                        <td class=" align-middle">{{payment.fineDate | date }}</td>
+                        <td class=" align-middle"
+                        width="50px"
+                        [id]="payment.id"
+                        [data]="dataInfo"
+                        [dataAction]="payment.id"
+                        appDelete></td>
+                        <td class="text-center align-middle" width="50px"><a 
+                            [routerLink]="['/admin/all-materials/update/e-book',payment.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                        <td>
+                            <app-payment id="paymentModel" 
+                            [finedueId]="payment.id"
+                            [memberName]="payment.bookIssueMemberFirstName"
+                            [memberLastName]="payment.bookIssueMemberLastName" 
+                            [data]="paymentDataInfo"
+                        ></app-payment>
+                            <button type="button" (click)="paymentRecevied(payment.id)" 
+                            class="btn btn-secondary paymentButton" id="paymentButton">Payment Received</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchPaymentInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+
+

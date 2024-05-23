@@ -1,0 +1,103 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Update Book</h4>
+        <div class="container-fluid" >
+            <form class="container-fluid" [formGroup]="updateBookForm" (ngSubmit)="UpdateBookSubmit(updateBookForm.value)">
+
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="ISBN Code" 
+                    labelId="isbnCode" 
+                    controlName="isbnCode" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Book Title" 
+                    labelId="bookTitle"
+                    controlName="bookTitle"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Book Edition" 
+                    labelId="bookEdition"
+                    controlName="bookEdition"
+                    inputType="number"/>
+                </div>
+                <div class="mb-3">
+                    <div class="d-md-flex align-items-center">
+                        <h6 class="me-3">IMAGE</h6>
+                        <input class="form-control bg-dark image" type="file" id="ImageFile" accept=".jpg,.jpeg,.png" 
+                        (change)="uploadImage($event)"
+                        formControlName="file">
+                    </div>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Release Date" 
+                    labelId="releaseDate"
+                    controlName="releaseDate"
+                    inputType="number"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Page Count" 
+                    labelId="pageCount"
+                    controlName="pageCount"
+                    inputType="number"/>
+                </div>
+                <!-- Publisher Search -->
+                <app-search 
+                [searchCategoryList]="searchPublisherTypeList"
+                [searchInputValues]="searchPublisherInputValues"
+                [searchController]="searchPublisherController"
+                (searchList)="searchPublisherList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg  me-2" id="publisherData" aria-label=".form-select-lg example" 
+                    formControlName="publisherId">
+                        <option  id="selectedPublisher"  *ngFor="let publisher of publisherSearchList"
+                        [value]="publisher.id"
+                          >{{publisher.name}}
+                        </option>
+                    </select>
+                </div>
+                <!-- Location Search -->
+                <app-search 
+                [searchCategoryList]="searchLocationTypeList"
+                [searchInputValues]="searchLocationInputValues"
+                [searchController]="searchLocationController"
+                (searchList)="searchLocationList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg  me-2" id="locationData" aria-label=".form-select-lg example" 
+                    formControlName="locationId">
+                        <option  id="selectedLocation"  *ngFor="let location of locationSearchList"
+                        [value]="location.id"
+                          >{{location.name}}-{{location.floorNo}}.Floor-{{location.shelfName}}-{{location.shelfNo}}.ShelfNo
+                        </option>
+                    </select>
+                </div>                     
+                <!-- Category Search -->
+                <app-search 
+                [searchCategoryList]="searchCategoryType"
+                [searchInputValues]="searchCategorieInputValues"
+                [searchController]="searchCategoryController"
+                (searchList)="searchCategoryList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3 mt-3">
+                    <select class="form-select form-select-lg  me-2" id="CategoryData" aria-label=".form-select-lg example" 
+                    formControlName="categoryId">
+                        <option  id="selectedCategory"  *ngFor="let Category of CategorySearchList"
+                        [value]="Category.id"
+                          >{{Category.name}}
+                        </option>
+                    </select>
+                </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Update Book</button>
+            </form>
+        </div>
+    </div>
+</div>

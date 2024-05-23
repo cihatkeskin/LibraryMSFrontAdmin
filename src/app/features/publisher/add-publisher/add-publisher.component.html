@@ -1,0 +1,22 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">New Publisher</h6>
+        <div class="container-fluid">
+            <form class="container-fluid" [formGroup]="addPublisherForm" (ngSubmit)="addPublisherSubmit(addPublisherForm.value)">
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="Publisher Name" 
+                    labelId="name" 
+                    controlName="name" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Publisher Language" 
+                    labelId="language"
+                    controlName="language"/>
+                </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Add Publisher</button>
+            </form>
+        </div>
+    </div>
+</div>

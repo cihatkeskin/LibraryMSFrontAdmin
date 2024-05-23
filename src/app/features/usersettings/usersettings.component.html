@@ -1,0 +1,45 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Update Book</h4>
+        <div class="container-fluid" >
+            <form class="container-fluid" [formGroup]="updateStaffForm" (ngSubmit)="UpdateBookSubmit(updateStaffForm.value)">
+
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="First Name" 
+                    labelId="firstName" 
+                    controlName="firstName" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Last Name" 
+                    labelId="lastName"
+                    controlName="lastName"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="E-mail" 
+                    labelId="email"
+                    controlName="email"
+                    inputType="email"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Birth Date" 
+                    labelId="birthDate"
+                    controlName="birthDate"
+                    inputType="date"/>
+                </div>
+                <div class="mb-3">
+                    <div class="d-md-flex align-items-center">
+                        <h6 class="me-3">IMAGE</h6>
+                        <input class="form-control bg-dark image" type="file" id="ImageFile" accept=".jpg,.jpeg,.png" 
+                        (change)="uploadImage($event)">
+                    </div>
+                </div>
+
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Update Book</button>
+            </form>
+        </div>
+    </div>
+</div>

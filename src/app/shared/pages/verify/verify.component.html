@@ -1,0 +1,17 @@
+<!-- 404 Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="col-md-6 text-center p-4" *ngIf="success" >
+                <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                <h6 class="mb-4">Verify Successful </h6>
+                <p class="mb-4">Welcome </p>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
+             </div>
+             <div class="col-md-6 text-center p-4" *ngIf="fault">
+                <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
+                <h6 class="mb-4">Verify FAULT</h6>
+                <p class="mb-4">Check correct code</p>
+                <a class="btn btn-primary rounded-pill py-3 px-5" href="">Go Back To Home</a>
+             </div>
+        </div>
+    </div>

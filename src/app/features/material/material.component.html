@@ -1,0 +1,60 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">MATERİALS</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchMaterialType"
+                [searchInputValues]="searchMaterialInputValues"
+                [searchController]="controller"
+                (searchList)="searchList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <button type="button" routerLink="/admin/all-materials/add-material" 
+            class="btn btn-dark m-2" id="addEBookButton">Create material</button>
+        </div>
+        <div class="table-responsive ">
+            <table class="table text-start align-middle table-bordered table-hover mb-3 ">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col">#</th>
+                        <th class="fs-5 text-white" scope="col">Location Name</th>
+                        <th class="fs-5 text-white" scope="col">Floor No</th>
+                        <th class="fs-5 text-white" scope="col">Shelf Name</th>
+                        <th class="fs-5 text-white" scope="col">Shelf No</th>
+                        <th class="fs-5 text-white" scope="col">Realese Date</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let material of materialList$ |async;index as i">
+                    <tr>
+                        <th scope="row">{{i+1}}</th>
+                        <td >{{material.name}}</td>
+                        <td >{{material.materialType}}</td>
+                        <td >{{material.categoryId}}</td>
+                        <td >{{material.publisherId}}</td>
+                        <td >{{material.releaseDate }} </td>
+                        <td 
+                        [id]="material.id"
+                        [data]="dataInfo"
+                        [dataAction]="material.id"
+                        appDelete>
+                        </td>
+                        <td><a [routerLink]="['/admin/all-materials/material/update',material.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchMaterialInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

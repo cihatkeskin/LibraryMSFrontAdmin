@@ -1,0 +1,39 @@
+<div class="container-fluid col-md-8">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Add Location</h6>
+        <div class="container-fluid">
+            <form class="container-fluid" [formGroup]="addLocationForm" (ngSubmit)="addLocationSubmit(addLocationForm.value)">
+
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="Location Name" 
+                    labelId="name" 
+                    controlName="name" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Floor No" 
+                    labelId="floorNo"
+                    inputType="number"
+                    controlName="floorNo"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Shelf Name" 
+                    labelId="shelfName"
+                    controlName="shelfName"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Shelf No" 
+                    labelId="shelfNo"
+                    inputType="number"
+                    controlName="shelfNo"/>
+                </div>
+
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Add Location</button>
+            </form>
+        </div>
+    </div>
+</div>
+

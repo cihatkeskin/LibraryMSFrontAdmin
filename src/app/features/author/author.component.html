@@ -1,0 +1,53 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">AUTHORS</h4>
+            <div class="search ">
+                <app-search 
+                [searchCategoryList]="searchAuthorType"
+                [searchInputValues]="searchAuthorInputValues"
+                [searchController]="controller"
+                (searchList)="searchList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+            </div>
+            <button type="button" routerLink="/admin/author-add" 
+            class="btn btn-dark m-2" id="addEBookButton">Create Author</button>
+        </div>
+        <div class="table-responsive ">
+            <table class="table text-start align-middle table-bordered table-hover mb-3 ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Author First Name</th>
+                        <th scope="col">Author Last Name</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let author of authorList$ | async; index as i">
+                    <tr >
+                        <th scope="row">{{i+1}}</th>
+                        <td >{{author.firstName}}</td>
+                        <td >{{author.lastName}}</td>
+                        <td 
+                        [id]="author.id"
+                        [data]="dataInfo"
+                        [dataAction]="author.id"
+                        appDelete></td>
+                        <td><a [routerLink]="['/admin/author/update',author.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchAuthorInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

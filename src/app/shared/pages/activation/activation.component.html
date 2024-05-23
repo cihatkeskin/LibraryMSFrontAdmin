@@ -1,0 +1,34 @@
+
+<div class="container-fluid position-relative d-flex p-0">
+
+
+    <!-- Sign Up Activasion -->
+    <div class="container-fluid">
+        <form [formGroup]="LoginActivasionform" (ngSubmit)="LoginActivasionSubmit(LoginActivasionform.value)">
+            <div class="row h-100 align-items-center justify-content-center form" >
+                <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
+                    <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3" >
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h3 class="text-primary">
+                                    <i class="bi bi-book-fill me-2">
+                                    </i>Book
+                                </h3>
+                            <h3>Activation</h3>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <myinput 
+                            labelText="Code" 
+                            labelId="floatingInput"
+                            controlName="authenticatorCode" />
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!-- Sign Up End -->
+</div>
+
+

@@ -1,0 +1,53 @@
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary  rounded p-4">
+        <div class="d-md-flex mb-4 ">
+            <h4 class="me-4 my-auto">ANNOUNCEMENT</h4>
+            <button type="button" routerLink="/admin/announcement/add" 
+            class="btn btn-dark m-2" id="addAnnouncementButton">Create Announcement</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th class="fs-5 text-white" scope="col" >#</th>
+                        <th class="fs-5 text-white" scope="col">Title</th>
+                        <th class="fs-5 text-white" scope="col">Image</th>
+                        <th class="fs-5 text-white" scope="col">Content</th>
+                        <th class="fs-5 text-white" scope="col">Tag</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let announcement of announcementList$ | async; index as i">
+                    <tr>
+                        <th class=" align-middle" scope="row">{{i+1}}</th>
+                        <td class=" align-middle">{{announcement.title}}</td>
+                        <td ><img [src]="announcement.file" 
+                            alt="image crashed"width="100" height="80"> </td>
+                        <td class=" align-middle" >
+                            <textarea class="text" name="content" id="myPopup" disabled> {{announcement.content}}</textarea>
+                        </td>
+                        <td class=" align-middle">{{announcement.tag}}</td>
+                        <td class="text-center align-middle"
+                        width="50px"
+                        [id]="announcement.id"
+                        [data]="dataInfo"
+                        [dataAction]="announcement.id"
+                        appDelete></td>
+                        <td class="text-center align-middle" width="50px"><a 
+                            [routerLink]="['/admin/announcement/update',announcement.id]">
+                            <i class="bi bi-arrow-counterclockwise updateIcon"></i></a> 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-pagination [data]="dataPagination"
+            [searchExist]="searchExist"
+            [searchInputValues]="searchAnnouncementInputValues"
+            [selectedSearchCategory]="searchSelectedCategory"           >
+            </app-pagination>
+        </div>
+    </div>
+</div>
+<app-delete id="deleteModel"></app-delete>
+

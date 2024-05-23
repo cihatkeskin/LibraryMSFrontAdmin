@@ -1,0 +1,76 @@
+<div class="container-fluid col-md-8 addMagazine mt-3">
+    <div class="bg-secondary rounded h-100 p-4">
+        <h4 class="mb-4">Create Magazine</h4>
+        <div class="container-fluid">
+            <form class="container-fluid" [formGroup]="addMagazineForm" (ngSubmit)="addMagazineSubmit(addMagazineForm.value)">
+                <div class="form-floating mb-3">
+                     <myinput 
+                    labelText="ISSN Code" 
+                    labelId="issnCode" 
+                    controlName="issnCode" />
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Magazine Title" 
+                    labelId="magazineTitle"
+                    controlName="magazineTitle"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelText="Number" 
+                    labelId="number"
+                    controlName="number"
+                    inputType="number"/>
+                </div>
+                <div class="form-floating mb-3">
+                    <myinput 
+                    labelId="releaseDate"
+                    controlName="releaseDate"
+                    inputType="date"/>
+                </div>
+                <span class="d-inline-block mb-3" tabindex="0" data-bs-toggle="tooltip" 
+                title="1 Choose category,2 Write word, 3 Click button">
+                    <button class="btn btn-danger" aria-label="Search" id="SearchInstruction" type="button" disabled>
+                        <i class="bi bi-patch-question"></i></button>
+                </span>
+                <!-- Publisher Search -->
+                <app-search 
+                [searchCategoryList]="searchPublisherTypeList"
+                [searchInputValues]="searchPublisherInputValues"
+                [searchController]="searchPublisherController"
+                (searchList)="searchPublisherList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3">
+                    <select class="form-select form-select-lg  me-2" id="publisherData" aria-label=".form-select-lg example" 
+                    formControlName="publisherId">
+                        <option  id="selectedPublisher"  *ngFor="let publisher of publisherSearchList"
+                        [value]="publisher.id"
+                          >{{publisher.name}}
+                          
+                        </option>
+                    </select>
+                </div>
+                <!-- Category Search -->
+                <app-search 
+                [searchCategoryList]="searchCategoryType"
+                [searchInputValues]="searchCategorieInputValues"
+                [searchController]="searchCategoryController"
+                (searchList)="searchCategoryList($event)"
+                [existSearch]="searchPagination">
+                </app-search>
+                <div class="form-floating mb-3">
+                    <select class="form-select form-select-lg  me-2" id="CategoryData" aria-label=".form-select-lg example"
+                    formControlName="categoryId">
+                        <option  id="selectedCategory"  *ngFor="let Category of CategorySearchList"
+                        [value]="Category.id"
+                          >{{Category.name }} 
+                        </option>
+                    </select>
+                </div>
+                <button type="submit"  class="btn btn-dark py-3 w-100 mb-4">Add Magazine</button>
+            </form>
+        </div>
+    </div>
+</div>
+
